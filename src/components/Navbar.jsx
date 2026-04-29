@@ -22,7 +22,7 @@ export default function Navbar() {
       <motion.div
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden md:block w-max"
+        className="fixed top-6 left-0 right-0 z-50 hidden md:flex justify-center"
       >
         <nav className="glass px-8 py-4 rounded-full border border-white/10 flex items-center gap-8 shadow-2xl backdrop-blur-3xl">
           <Link to="/" className="text-lg font-black tracking-tighter text-birthday-text uppercase border-r border-birthday-text/20 pr-8">

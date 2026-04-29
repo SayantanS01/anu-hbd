@@ -119,7 +119,7 @@ const WishGenerator = () => {
       </motion.p>
       <button 
         onClick={() => setWish(wishes[Math.floor(Math.random() * wishes.length)])}
-        className="mt-6 btn-premium bg-birthday-pink text-white justify-center"
+        className="mt-6 btn-premium bg-birthday-pink text-white flex items-center justify-center gap-2 py-4 px-8"
       >
         <RotateCcw size={18} /> New Wish
       </button>
