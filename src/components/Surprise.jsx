@@ -76,8 +76,8 @@ export default function Surprise() {
               className="pt-12 grid grid-cols-3 gap-8"
             >
               <div className="p-8 glass rounded-3xl">
-                <p className="text-4xl font-black text-birthday-pink">2024</p>
-                <p className="text-xs uppercase font-bold tracking-widest opacity-50">Graduation Year</p>
+                <p className="text-4xl font-black text-birthday-pink">2026</p>
+                <p className="text-xs uppercase font-bold tracking-widest opacity-50">School Pass Out</p>
               </div>
               <div className="p-8 glass rounded-3xl">
                 <p className="text-4xl font-black text-birthday-pink">∞</p>

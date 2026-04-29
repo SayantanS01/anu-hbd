@@ -22,7 +22,7 @@ export default function MusicPlayer() {
   }, [volume, isMuted, isPlaying, isExperienceStarted]);
 
   return (
-    <div className="fixed bottom-32 md:bottom-8 right-4 md:right-8 z-50 flex items-center gap-4">
+    <div className="fixed top-6 right-4 md:top-auto md:bottom-8 md:right-8 z-[60] flex items-center gap-4 scale-90 sm:scale-100 origin-right">
       <audio 
         ref={audioRef} 
         src={musicUrl || '/music/default.mp3'} 
