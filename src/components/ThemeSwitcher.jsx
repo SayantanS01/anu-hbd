@@ -13,7 +13,7 @@ export default function ThemeSwitcher() {
   ];
 
   return (
-    <div className="fixed top-32 right-8 z-50 flex flex-col gap-3">
+    <div className="fixed bottom-40 sm:top-32 right-4 sm:right-8 z-50 flex flex-col gap-2 sm:gap-3">
       {themes.map((t) => (
         <motion.button
           key={t.id}

@@ -8,7 +8,7 @@ export default function Hero() {
   const birthdayName = useStore((state) => state.birthdayName);
 
   return (
-    <section className="relative h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 pt-20 sm:pt-0 overflow-hidden">
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
