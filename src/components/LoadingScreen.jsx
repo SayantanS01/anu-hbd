@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 export default function LoadingScreen() {
   return (
     <motion.div
-      className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-birthday-light dark:bg-neon-bg"
+      className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-birthday-light"
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 1, ease: "easeInOut" }}

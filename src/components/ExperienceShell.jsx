@@ -12,7 +12,7 @@ export default function ExperienceShell({ children }) {
     <motion.div
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[200] bg-white dark:bg-[#050505] flex items-center justify-center p-8 overflow-hidden"
+      className="fixed inset-0 z-[200] bg-birthday-light flex items-center justify-center p-8 overflow-hidden transition-colors duration-500"
     >
       <div className="max-w-4xl w-full text-center space-y-16 z-10">
         <motion.div
@@ -29,7 +29,7 @@ export default function ExperienceShell({ children }) {
           >
             A Professional Tribute
           </motion.span>
-          <h1 className="text-6xl md:text-9xl font-black tracking-tighter leading-none font-serif italic">
+          <h1 className="text-6xl md:text-9xl font-black tracking-tighter leading-none font-serif italic text-birthday-text">
             Celebrating <br /> {birthdayName}
           </h1>
         </motion.div>
@@ -40,7 +40,7 @@ export default function ExperienceShell({ children }) {
           onClick={startExperience}
           className="relative group inline-flex items-center justify-center p-1 overflow-hidden font-medium text-gray-900 rounded-full group bg-gradient-to-br from-birthday-text to-birthday-pink transition-all duration-1000"
         >
-          <span className="relative px-16 py-8 transition-all ease-in duration-75 bg-white dark:bg-black rounded-full group-hover:bg-opacity-0 flex items-center gap-4 text-2xl font-black uppercase tracking-widest text-birthday-text dark:text-white">
+          <span className="relative px-16 py-8 transition-all ease-in duration-75 bg-birthday-light rounded-full group-hover:bg-opacity-0 flex items-center gap-4 text-2xl font-black uppercase tracking-widest text-birthday-text">
             <Play fill="currentColor" size={24} /> Begin Tribute
           </span>
         </motion.button>
