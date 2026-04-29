@@ -60,17 +60,18 @@ export default function JourneySection() {
                 index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
               }`}
             >
-              <div className="flex-1 text-center md:text-left">
-                <div className="inline-flex p-4 rounded-3xl bg-birthday-pink text-birthday-light shadow-2xl mb-6">
-                  {item.icon}
-                </div>
-                <h3 className="text-sm font-bold tracking-[0.3em] uppercase text-birthday-pink mb-2">{item.year}</h3>
-                <h4 className="text-4xl font-black mb-6 tracking-tight text-birthday-text">
-                  {item.title}
-                </h4>
-                <p className="text-lg text-birthday-text/80 leading-relaxed max-w-md mx-auto md:mx-0 font-medium">
-                  {item.description}
-                </p>
+              <div className={`w-full md:w-1/2 px-4 sm:px-8 ${index % 2 === 0 ? 'md:text-right md:pr-16' : 'md:text-left md:pl-16'}`}>
+                <motion.div
+                  initial={{ x: index % 2 === 0 ? -50 : 50, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  className="space-y-2 sm:space-y-4"
+                >
+                  <span className="text-3xl sm:text-5xl md:text-7xl font-black text-birthday-text opacity-10 font-serif block">{item.year}</span>
+                  <h3 className="text-lg sm:text-2xl font-bold text-birthday-text tracking-tight leading-tight">{item.title}</h3>
+                  <p className="text-sm sm:text-base text-birthday-text opacity-80 font-medium leading-relaxed max-w-xs mx-auto md:mx-0">
+                    {item.description}
+                  </p>
+                </motion.div>
               </div>
 
               <div className="hidden md:flex w-12 h-12 rounded-full glass border border-birthday-pink/50 z-10 items-center justify-center bg-birthday-light">

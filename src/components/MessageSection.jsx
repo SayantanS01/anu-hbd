@@ -13,17 +13,17 @@ export default function MessageSection() {
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-        className="max-w-6xl w-full glass p-16 md:p-32 rounded-[4rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] text-center relative z-10 backdrop-blur-3xl border border-white/10"
+        className="max-w-6xl w-full glass p-8 sm:p-16 md:p-32 rounded-[3rem] sm:rounded-[4rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] text-center relative z-10 backdrop-blur-3xl border border-white/10"
       >
         <motion.span
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          className="text-birthday-pink font-bold tracking-[0.4em] uppercase text-xs mb-12 block"
+          className="text-birthday-pink font-bold tracking-[0.4em] uppercase text-[10px] sm:text-xs mb-8 sm:mb-12 block"
         >
           Heartfelt Appreciation
         </motion.span>
         
-        <div className="text-3xl md:text-5xl lg:text-6xl font-serif italic leading-tight text-birthday-text dark:text-white mb-16">
+        <div className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-serif italic leading-tight text-birthday-text dark:text-white mb-12 sm:mb-16">
           <Typewriter
             options={{
               strings: [message],
