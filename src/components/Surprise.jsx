@@ -73,7 +73,7 @@ export default function Surprise() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1 }}
-              className="pt-12 grid grid-cols-3 gap-8"
+              className="pt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8"
             >
               <div className="p-8 glass rounded-3xl">
                 <p className="text-4xl font-black text-birthday-pink">2026</p>

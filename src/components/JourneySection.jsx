@@ -17,7 +17,7 @@ export default function JourneySection() {
       icon: <School size={32} />,
     },
     {
-      year: "2024",
+      year: "2026",
       title: "The Grand Milestone",
       description: "This year marks the end of a beautiful chapter. Passing out of school isn't just a graduation; it's the moment you step into the world as a person of excellence. We are so proud of your journey.",
       icon: <GraduationCap size={32} />,
