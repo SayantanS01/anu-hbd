@@ -14,7 +14,6 @@ import Admin from './pages/Admin';
 import Navbar from './components/Navbar';
 import ThreeScene from './components/ThreeScene';
 import MusicPlayer from './components/MusicPlayer';
-import ThemeSwitcher from './components/ThemeSwitcher';
 import LoadingScreen from './components/LoadingScreen';
 import ExperienceShell from './components/ExperienceShell';
 import useStore from './store/useStore';
@@ -68,7 +67,6 @@ function App() {
             </div>
 
             {/* Persistent UI elements */}
-            <ThemeSwitcher />
             <MusicPlayer />
           </div>
         </Suspense>
