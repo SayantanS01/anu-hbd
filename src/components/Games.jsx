@@ -41,7 +41,7 @@ const BalloonPop = () => {
             animate={{ y: -50, opacity: 1 }}
             exit={{ scale: 2, opacity: 0 }}
             transition={{ duration: 5, ease: "linear" }}
-            onMouseDown={() => pop(b.id)}
+            onClick={() => pop(b.id)}
             className="absolute cursor-pointer"
             style={{ left: `${b.x}%`, backgroundColor: b.color, width: b.size, height: b.size * 1.2, borderRadius: '50%' }}
           />
