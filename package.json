@@ -13,6 +13,7 @@
     "@react-three/drei": "^9.102.0",
     "@react-three/fiber": "^8.16.0",
     "@supabase/supabase-js": "^2.105.1",
+    "@vercel/analytics": "^2.0.1",
     "canvas-confetti": "^1.9.2",
     "clsx": "^2.1.0",
     "framer-motion": "^11.0.8",
