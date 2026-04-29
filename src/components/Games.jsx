@@ -89,7 +89,7 @@ const MemoryGame = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => handleClick(i)}
-          className={`h-16 flex items-center justify-center text-2xl rounded-xl cursor-pointer transition-all duration-300 ${
+          className={`h-20 sm:h-24 flex items-center justify-center text-3xl sm:text-4xl rounded-2xl cursor-pointer transition-all duration-300 ${
             flipped.includes(i) || solved.includes(i) ? 'bg-birthday-pink scale-105' : 'glass'
           }`}
         >
