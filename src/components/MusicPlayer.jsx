@@ -22,7 +22,7 @@ export default function MusicPlayer() {
   }, [volume, isMuted, isPlaying, isExperienceStarted]);
 
   return (
-    <div className="fixed bottom-8 right-8 z-50 flex items-center gap-4">
+    <div className="fixed bottom-32 md:bottom-8 right-4 md:right-8 z-50 flex items-center gap-4">
       <audio 
         ref={audioRef} 
         src={musicUrl || '/music/default.mp3'} 
@@ -41,7 +41,7 @@ export default function MusicPlayer() {
           {isPlaying ? <Pause size={20} /> : <Play size={20} />}
         </motion.button>
 
-        <div className="flex flex-col">
+        <div className="hidden sm:flex flex-col">
           <span className="text-[10px] uppercase tracking-tighter opacity-50 font-bold">Now Playing</span>
           <span className="text-xs font-medium max-w-[100px] truncate">Birthday Vibes</span>
         </div>
