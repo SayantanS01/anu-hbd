@@ -42,7 +42,7 @@ export default function MessageSection() {
           className="flex flex-col items-center gap-4"
         >
           <div className="w-24 h-[1px] bg-birthday-pink/50" />
-          <span className="text-birthday-pink font-bold tracking-[0.6em] uppercase text-xs">A Tribute to Anushmita</span>
+          <span className="text-birthday-pink font-bold tracking-[0.6em] uppercase text-xs">A Tribute to Anusmita</span>
         </motion.div>
       </motion.div>
 

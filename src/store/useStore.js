@@ -11,7 +11,7 @@ const useStore = create((set, get) => ({
   },
 
   // Identity state
-  birthdayName: "Anushmita",
+  birthdayName: "Anusmita",
   setBirthdayName: (name) => set({ birthdayName: name }),
 
   // Message state
@@ -51,7 +51,7 @@ const useStore = create((set, get) => ({
     if (data && !error) {
       set({
         theme: data.theme || 'dark',
-        birthdayName: data.birthday_name || 'Anushmita',
+        birthdayName: data.birthday_name || 'Anusmita',
         message: data.message || '',
         images: data.images || [],
         musicUrl: data.music_url || '',
