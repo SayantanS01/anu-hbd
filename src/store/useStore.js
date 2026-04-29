@@ -1,61 +1,94 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { supabase } from '../lib/supabase';
 
-const useStore = create(
-  persist(
-    (set) => ({
-      // Theme state
-      theme: 'dark',
-      setTheme: (theme) => {
-        document.documentElement.setAttribute('data-theme', theme);
-        set({ theme });
-      },
+const useStore = create((set, get) => ({
+  // Theme state
+  theme: 'dark',
+  setTheme: async (theme) => {
+    document.documentElement.setAttribute('data-theme', theme);
+    set({ theme });
+    await get().saveToSupabase();
+  },
 
-      // Identity state
-      birthdayName: "Anushmita",
-      setBirthdayName: (name) => set({ birthdayName: name }),
+  // Identity state
+  birthdayName: "Anushmita",
+  setBirthdayName: (name) => set({ birthdayName: name }),
 
-      // Message state
-      message: "Even though we don’t know each other much, I just wanted to wish you a very happy birthday. May your day be filled with joy and your year with success!",
-      setMessage: (message) => set({ message }),
+  // Message state
+  message: "Even though we don’t know each other very well, I just wanted to wish you a very happy birthday. May your day be filled with joy and your year with success!",
+  setMessage: (message) => set({ message }),
 
-      // Gallery state (Using your uploaded images)
-      images: [
-        '/images/477450610_1100753825134031_5509271399192773941_n.jpg',
-        '/images/481923831_1117734283435985_3714343966933150254_n.jpg',
-        '/images/549234067_1263048145571264_8457417335223303509_n.jpg',
-        '/images/558864974_1278779587331453_1831040692694396925_n.jpg',
-        '/images/567801616_1290536182822460_9217930326138226861_n.jpg',
-        '/images/655502893_1406773891198688_4534529526645753491_n.jpg',
-      ],
-      addImage: (image) => set((state) => ({ images: [...state.images, image] })),
-      removeImage: (index) => set((state) => ({ images: state.images.filter((_, i) => i !== index) })),
-      setImages: (images) => set({ images }),
+  // Gallery state
+  images: [],
+  addImage: (image) => set((state) => ({ images: [...state.images, image] })),
+  removeImage: (index) => set((state) => ({ images: state.images.filter((_, i) => i !== index) })),
+  setImages: (images) => set({ images }),
 
-      // Music state (Using your uploaded song)
-      musicUrl: '/music/Nicky Youre, dazy - Sunroof (Official Music Video).mp3',
-      isMuted: false,
-      isPlaying: false,
-      volume: 0.5,
-      setMusicUrl: (url) => set({ musicUrl: url }),
-      setIsPlaying: (playing) => set({ isPlaying: playing }),
-      toggleMute: () => set((state) => ({ isMuted: !state.isMuted })),
-      setVolume: (volume) => set({ volume }),
+  // Music state
+  musicUrl: '',
+  isMuted: false,
+  isPlaying: false,
+  volume: 0.5,
+  setMusicUrl: (url) => set({ musicUrl: url }),
+  setIsPlaying: (playing) => set({ isPlaying: playing }),
+  toggleMute: () => set((state) => ({ isMuted: !state.isMuted })),
+  setVolume: (volume) => set({ volume }),
 
-      // Global Experience State
-      isExperienceStarted: false,
-      startExperience: () => set({ isExperienceStarted: true, isPlaying: true }),
+  // Global Experience State
+  isExperienceStarted: false,
+  startExperience: () => set({ isExperienceStarted: true, isPlaying: true }),
 
-      // Reset functionality
-      resetStore: () => {
-        localStorage.removeItem('birthday-storage');
-        window.location.reload();
-      }
-    }),
-    {
-      name: 'birthday-storage',
+  // --- Database Logic ---
+
+  // Fetch initial config from Supabase
+  fetchConfig: async () => {
+    const { data, error } = await supabase
+      .from('birthday_config')
+      .select('*')
+      .eq('id', 1)
+      .single();
+
+    if (data && !error) {
+      set({
+        theme: data.theme || 'dark',
+        birthdayName: data.birthday_name || 'Anushmita',
+        message: data.message || '',
+        images: data.images || [],
+        musicUrl: data.music_url || '',
+      });
+      document.documentElement.setAttribute('data-theme', data.theme || 'dark');
     }
-  )
-);
+  },
+
+  // Save current state to Supabase
+  saveToSupabase: async () => {
+    const state = get();
+    const { error } = await supabase
+      .from('birthday_config')
+      .upsert({
+        id: 1,
+        theme: state.theme,
+        birthday_name: state.birthdayName,
+        message: state.message,
+        images: state.images,
+        music_url: state.musicUrl,
+        updated_at: new Date(),
+      });
+
+    if (error) {
+      console.error('Error saving to Supabase:', error);
+      throw error;
+    }
+  },
+
+  // Reset functionality (Clears DB record 1)
+  resetStore: async () => {
+    const confirm = window.confirm("This will clear the database. Are you sure?");
+    if (confirm) {
+      await supabase.from('birthday_config').delete().eq('id', 1);
+      window.location.reload();
+    }
+  }
+}));
 
 export default useStore;

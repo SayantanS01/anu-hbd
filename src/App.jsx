@@ -40,6 +40,11 @@ function AnimatedRoutes() {
 function App() {
   const theme = useStore((state) => state.theme);
   const birthdayName = useStore((state) => state.birthdayName);
+  const fetchConfig = useStore((state) => state.fetchConfig);
+
+  useEffect(() => {
+    fetchConfig();
+  }, []);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);

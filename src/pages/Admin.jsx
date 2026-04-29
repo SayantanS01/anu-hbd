@@ -13,8 +13,23 @@ export default function Admin() {
     images, addImage, removeImage, setImages,
     musicUrl, setMusicUrl,
     resetStore,
-    theme
+    theme,
+    saveToSupabase
   } = useStore();
+
+  const [isSaving, setIsSaving] = useState(false);
+
+  const handlePublish = async () => {
+    setIsSaving(true);
+    try {
+      await saveToSupabase();
+      alert("🚀 Site Published! Your changes are now live on the cloud.");
+    } catch (err) {
+      alert("Failed to save to cloud: " + err.message);
+    } finally {
+      setIsSaving(false);
+    }
+  };
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -111,9 +126,20 @@ export default function Admin() {
             <h1 className="text-4xl font-black text-birthday-text">Control Center</h1>
             <p className="text-birthday-pink font-bold uppercase text-xs tracking-[0.3em] mt-2">Personalize the experience</p>
           </div>
-          <button onClick={resetStore} className="flex items-center gap-2 text-red-500 font-bold hover:bg-red-500/10 px-4 py-2 rounded-xl transition-all">
-            <RotateCcw size={18} /> Reset All
-          </button>
+          <div className="flex items-center gap-4">
+            <button 
+              onClick={handlePublish} 
+              disabled={isSaving}
+              className={`flex items-center gap-2 font-black uppercase text-xs tracking-widest px-6 py-3 rounded-xl transition-all ${
+                isSaving ? 'bg-gray-500 cursor-wait' : 'bg-green-500 hover:scale-105 text-white shadow-lg'
+              }`}
+            >
+              <Save size={18} /> {isSaving ? 'Publishing...' : 'Publish Changes'}
+            </button>
+            <button onClick={resetStore} className="flex items-center gap-2 text-red-500 font-bold hover:bg-red-500/10 px-4 py-2 rounded-xl transition-all">
+              <RotateCcw size={18} /> Reset All
+            </button>
+          </div>
         </header>
 
         {/* Identity Settings */}
