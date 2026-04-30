@@ -29,8 +29,8 @@ export default function ExperienceShell({ children }) {
           >
             A Professional Tribute
           </motion.span>
-          <h1 className="text-6xl md:text-9xl font-black tracking-tighter leading-none font-serif italic text-birthday-text">
-            Celebrating <br /> {birthdayName}
+          <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-none font-serif italic text-birthday-text">
+            Happy Birthday <br /> {birthdayName}
           </h1>
         </motion.div>
 

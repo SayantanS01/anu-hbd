@@ -1,4 +1,4 @@
-import React, { useEffect, Suspense } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { Analytics } from "@vercel/analytics/react";
@@ -54,23 +54,21 @@ function App() {
   return (
     <Router>
       <ExperienceShell>
-        <Suspense fallback={<LoadingScreen />}>
-          <div className="relative min-h-screen overflow-x-hidden bg-transparent">
-            {/* Persistent Background 3D Scene */}
-            <div className="fixed inset-0 z-0">
-              <ThreeScene />
-            </div>
-
-            {/* Content Layer */}
-            <div className="relative z-10">
-              <Navbar />
-              <AnimatedRoutes />
-            </div>
-
-            {/* Persistent UI elements */}
-            <MusicPlayer />
+        <div className="relative min-h-screen overflow-x-hidden bg-transparent">
+          {/* Persistent Background 3D Scene */}
+          <div className="fixed inset-0 z-0">
+            <ThreeScene />
           </div>
-        </Suspense>
+
+          {/* Content Layer */}
+          <div className="relative z-10">
+            <Navbar />
+            <AnimatedRoutes />
+          </div>
+
+          {/* Persistent UI elements */}
+          <MusicPlayer />
+        </div>
       </ExperienceShell>
       <Analytics />
     </Router>

@@ -24,8 +24,8 @@ export default function Hero() {
           A Birthday Tribute to Excellence
         </motion.span>
         
-        <h1 className="text-5xl sm:text-7xl md:text-[10rem] lg:text-[12rem] font-black mb-8 tracking-tighter leading-[0.8] font-serif italic text-birthday-text">
-          Happy <br />
+        <h1 className="text-5xl sm:text-7xl md:text-[8rem] lg:text-[10rem] font-black mb-8 tracking-tighter leading-[0.8] font-serif italic text-birthday-text">
+          Happy Birthday <br />
           <motion.span
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
