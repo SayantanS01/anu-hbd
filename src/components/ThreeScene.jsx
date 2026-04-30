@@ -1,6 +1,6 @@
 import React, { Suspense, useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, PerspectiveCamera, Environment, Stars, Float } from '@react-three/drei';
+import { OrbitControls, PerspectiveCamera, Stars, Float, ContactShadows } from '@react-three/drei';
 import * as THREE from 'three';
 import Balloons from '../three/Balloons';
 import GiftBox from '../three/GiftBox';
@@ -75,15 +75,23 @@ export default function ThreeScene() {
         <PerspectiveCamera makeDefault position={[0, 0, 10]} fov={50} />
         
         <Suspense fallback={null}>
-          <Environment preset={theme === 'dark' ? "night" : "city"} />
-          <ambientLight intensity={theme === 'dark' ? 1.5 : 2} />
-          <pointLight position={[10, 10, 10]} intensity={2} />
-          <spotLight position={[-10, 10, 10]} angle={0.15} penumbra={1} intensity={2} />
+          <ambientLight intensity={theme === 'dark' ? 0.5 : 1} />
+          <pointLight position={[10, 10, 10]} intensity={theme === 'dark' ? 1.5 : 2} />
+          <spotLight position={[-10, 10, 10]} angle={0.15} penumbra={1} intensity={theme === 'dark' ? 1 : 2} />
           
-          <group scale={1.2}>
+          <group scale={1.2} position={[0, 1, 0]}>
             <Balloons />
             <GiftBox />
           </group>
+
+          <ContactShadows 
+            position={[0, -3, 0]} 
+            opacity={0.4} 
+            scale={20} 
+            blur={2.5} 
+            far={4.5} 
+          />
+          
           <Particles count={theme === 'dark' ? 150 : 80} />
           
           {theme === 'dark' && <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />}
