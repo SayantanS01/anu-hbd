@@ -26,7 +26,14 @@ export default function GiftBox() {
         {/* Main Box */}
         <mesh>
           <boxGeometry args={[1, 1, 1]} />
-          <meshStandardMaterial color={accentColor} roughness={0.2} metalness={0.5} />
+          <meshPhysicalMaterial 
+            color={accentColor} 
+            roughness={0.1} 
+            metalness={0.6} 
+            clearcoat={1}
+            emissive={accentColor}
+            emissiveIntensity={0.2}
+          />
         </mesh>
         {/* Ribbon Vertical */}
         <mesh position={[0, 0, 0]} scale={[1.05, 1.05, 0.2]}>

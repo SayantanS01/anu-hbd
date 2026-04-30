@@ -17,12 +17,15 @@ function Balloon({ position, color, speed }) {
       <group position={position}>
         <mesh ref={mesh}>
           <sphereGeometry args={[1, 32, 32]} />
-          <meshStandardMaterial 
+          <meshPhysicalMaterial 
             color={color} 
-            roughness={0.1} 
-            metalness={0.8} 
+            roughness={0.05} 
+            metalness={0.9} 
             emissive={color}
-            emissiveIntensity={0.2}
+            emissiveIntensity={0.8}
+            clearcoat={1}
+            clearcoatRoughness={0.1}
+            reflectivity={1}
           />
         </mesh>
         <mesh position={[0, -1.2, 0]}>

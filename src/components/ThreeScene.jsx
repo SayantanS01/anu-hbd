@@ -75,9 +75,11 @@ export default function ThreeScene() {
         <PerspectiveCamera makeDefault position={[0, 0, 10]} fov={50} />
         
         <Suspense fallback={null}>
-          <ambientLight intensity={theme === 'dark' ? 0.5 : 1} />
-          <pointLight position={[10, 10, 10]} intensity={theme === 'dark' ? 1.5 : 2} />
-          <spotLight position={[-10, 10, 10]} angle={0.15} penumbra={1} intensity={theme === 'dark' ? 1 : 2} />
+          <ambientLight intensity={theme === 'dark' ? 0.8 : 1.2} />
+          <pointLight position={[10, 10, 10]} intensity={2} />
+          <pointLight position={[-10, 5, 5]} intensity={1.5} color={theme === 'dark' ? '#00f2ff' : '#ffffff'} />
+          <pointLight position={[5, -5, 10]} intensity={1} />
+          <spotLight position={[0, 10, 0]} angle={0.3} penumbra={1} intensity={2} castShadow />
           
           <group scale={1.2} position={[0, 1, 0]}>
             <Balloons />
